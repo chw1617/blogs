@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JS 执行上下文栈 | Jermemy Front-End Bolg</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.9073803f.css" as="style"><link rel="preload" href="/blogs/assets/js/app.889eeba3.js" as="script"><link rel="preload" href="/blogs/assets/js/2.e81f7628.js" as="script"><link rel="preload" href="/blogs/assets/js/12.63f0cd99.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.a9eeb74b.js"><link rel="prefetch" href="/blogs/assets/js/11.949181c5.js"><link rel="prefetch" href="/blogs/assets/js/13.f8e6d8e6.js"><link rel="prefetch" href="/blogs/assets/js/14.30844176.js"><link rel="prefetch" href="/blogs/assets/js/15.7c29aa01.js"><link rel="prefetch" href="/blogs/assets/js/16.406820d3.js"><link rel="prefetch" href="/blogs/assets/js/17.bcd42ff1.js"><link rel="prefetch" href="/blogs/assets/js/18.b46c4829.js"><link rel="prefetch" href="/blogs/assets/js/19.d438dc1f.js"><link rel="prefetch" href="/blogs/assets/js/20.49ee1085.js"><link rel="prefetch" href="/blogs/assets/js/21.76540d90.js"><link rel="prefetch" href="/blogs/assets/js/22.c06b0944.js"><link rel="prefetch" href="/blogs/assets/js/23.6f270d29.js"><link rel="prefetch" href="/blogs/assets/js/24.b303b752.js"><link rel="prefetch" href="/blogs/assets/js/25.803cf14e.js"><link rel="prefetch" href="/blogs/assets/js/26.445dd281.js"><link rel="prefetch" href="/blogs/assets/js/27.21ad672a.js"><link rel="prefetch" href="/blogs/assets/js/28.47a4f190.js"><link rel="prefetch" href="/blogs/assets/js/29.55ed2ebe.js"><link rel="prefetch" href="/blogs/assets/js/3.8f8980d1.js"><link rel="prefetch" href="/blogs/assets/js/30.2346dfa9.js"><link rel="prefetch" href="/blogs/assets/js/31.38871991.js"><link rel="prefetch" href="/blogs/assets/js/32.2236b8d3.js"><link rel="prefetch" href="/blogs/assets/js/33.73a5512d.js"><link rel="prefetch" href="/blogs/assets/js/34.3e5d6f4d.js"><link rel="prefetch" href="/blogs/assets/js/35.e5df9086.js"><link rel="prefetch" href="/blogs/assets/js/36.4220e99b.js"><link rel="prefetch" href="/blogs/assets/js/37.c3a52a33.js"><link rel="prefetch" href="/blogs/assets/js/38.01318ad1.js"><link rel="prefetch" href="/blogs/assets/js/39.b6474efa.js"><link rel="prefetch" href="/blogs/assets/js/4.e27a7f7a.js"><link rel="prefetch" href="/blogs/assets/js/40.dea32a8b.js"><link rel="prefetch" href="/blogs/assets/js/41.07b2a077.js"><link rel="prefetch" href="/blogs/assets/js/42.b058ecc8.js"><link rel="prefetch" href="/blogs/assets/js/5.e9f4081f.js"><link rel="prefetch" href="/blogs/assets/js/6.c7b54f12.js"><link rel="prefetch" href="/blogs/assets/js/7.81b258a5.js"><link rel="prefetch" href="/blogs/assets/js/8.29c11945.js"><link rel="prefetch" href="/blogs/assets/js/9.effed064.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.9073803f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><!----> <span class="site-name">Jermemy Front-End Bolg</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/browser/" class="nav-link">
+  浏览器
+</a></div><div class="nav-item"><a href="/blogs/base/" class="nav-link router-link-active">
+  前端基础
+</a></div><div class="nav-item"><a href="/blogs/data-structrue/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/blogs/frame/" class="nav-link">
+  框架
+</a></div><div class="nav-item"><a href="/blogs/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/blogs/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/blogs/read/" class="nav-link">
+  颜如玉
+</a></div><div class="nav-item"><a href="https://github.com/chw1617/blogs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blogs/browser/" class="nav-link">
+  浏览器
+</a></div><div class="nav-item"><a href="/blogs/base/" class="nav-link router-link-active">
+  前端基础
+</a></div><div class="nav-item"><a href="/blogs/data-structrue/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/blogs/frame/" class="nav-link">
+  框架
+</a></div><div class="nav-item"><a href="/blogs/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/blogs/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/blogs/read/" class="nav-link">
+  颜如玉
+</a></div><div class="nav-item"><a href="https://github.com/chw1617/blogs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JS系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/base/js/lexical.html" class="sidebar-link">JS 词法分析（静态作用域）</a></li><li><a href="/blogs/base/js/ctx_ecStack.html" aria-current="page" class="active sidebar-link">JS 执行上下文栈</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blogs/base/js/ctx_ecStack.html#js中的代码如何执行" class="sidebar-link">js中的代码如何执行</a></li><li class="sidebar-sub-header"><a href="/blogs/base/js/ctx_ecStack.html#js中的执行上下文" class="sidebar-link">js中的执行上下文</a></li><li class="sidebar-sub-header"><a href="/blogs/base/js/ctx_ecStack.html#执行上下文包含哪些内容" class="sidebar-link">执行上下文包含哪些内容</a></li><li class="sidebar-sub-header"><a href="/blogs/base/js/ctx_ecStack.html#js中的执行上下文栈" class="sidebar-link">js中的执行上下文栈</a></li><li class="sidebar-sub-header"><a href="/blogs/base/js/ctx_ecStack.html#解析上一章的思考题" class="sidebar-link">解析上一章的思考题</a></li></ul></li><li><a href="/blogs/base/js/variable_object.html" class="sidebar-link">JS 变量对象</a></li><li><a href="/blogs/base/js/scope_chain.html" class="sidebar-link">JS 作用域链</a></li><li><a href="/blogs/base/js/this.html" class="sidebar-link">JS this指向</a></li><li><a href="/blogs/base/js/closure.html" class="sidebar-link">JS 闭包</a></li><li><a href="/blogs/base/js/prototype.html" class="sidebar-link">JS 原型链</a></li><li><a href="/blogs/base/js/extend.html" class="sidebar-link">JS继承</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="js-执行上下文栈"><a href="#js-执行上下文栈" class="header-anchor">#</a> JS 执行上下文栈</h1> <ul><li>下面主要分析js中的代码是怎么执行的</li> <li>分析js中的代码执行如何管理</li></ul> <h2 id="js中的代码如何执行"><a href="#js中的代码如何执行" class="header-anchor">#</a> js中的代码如何执行</h2> <ul><li>js的代码是按顺序执行的吗，我们先看demo</li></ul> <div class="language- extra-class"><pre class="language-text"><code> var f1 = function(){
+     console.log('f1')
+ }
+
+ f1() // 输出f1
+ var f2 = function(){
+     console.log('f2')
+ }
+ f2() // 输出 f2
+</code></pre></div><p>如果是这个例子，很容易看出js是按顺序执行的，我们在看另外的demo</p> <div class="language- extra-class"><pre class="language-text"><code>function f1(){
+    console.log('f1')
+}
+f1() // 输出f2
+function f1(){
+    console.log('f2')
+}
+f1() // 输出f2
+</code></pre></div><p>这个时候，输出的都是f2，这就打破了我们的认知，js中的代码并非是一行一行执行的，而是一段一段执行的，当执行一段代码的时候，会进入编译准备工作，这个时候就会存在变量、函数的提升工作;
+第一个例子可以理解成下面的代码</p> <div class="language- extra-class"><pre class="language-text"><code> var f1
+ var f2
+ f1 = function(){console.log('f1')}
+ f1()
+ f2 = function(){console.log('f2')}
+</code></pre></div><p>第二个例子可以理解成</p> <div class="language- extra-class"><pre class="language-text"><code>function f1(){console.log('f2')}
+f1()
+f1()
+</code></pre></div><h2 id="js中的执行上下文"><a href="#js中的执行上下文" class="header-anchor">#</a> js中的执行上下文</h2> <ul><li>上面的例子中提到了编译准备工作，这个编译准备也可以叫做执行上下文</li> <li>其实在js中，存在全局上下文、函数上下文、eval上下文</li></ul> <h2 id="执行上下文包含哪些内容"><a href="#执行上下文包含哪些内容" class="header-anchor">#</a> 执行上下文包含哪些内容</h2> <ul><li>js的执行上下文中包含了变量对象、作用域链、this;后面会一一详细解析这三个属性</li> <li>分析全局的上下文伪代码如下</li></ul> <div class="language- extra-class"><pre class="language-text"><code> var scope = 'glabal scope'
+ function f1(){}
+</code></pre></div><p>//创建的全局上下文如下：</p> <div class="language- extra-class"><pre class="language-text"><code> globalContext = {
+     VO:{ //variable object 存放了当前作用的的变量
+         scope:undefined
+         f1:function f1(){}
+     },
+     scope:[globalContext.VO],//存放了变量对象的链表结构
+     this: globalContext
+ }
+</code></pre></div><h2 id="js中的执行上下文栈"><a href="#js中的执行上下文栈" class="header-anchor">#</a> js中的执行上下文栈</h2> <p>当我们在写代码的时候，会定义很多函数，那js是如何去管理的呐
+所以在js中会创建一个栈的数据结构去管理执行上下文，我们可以用ECStack是一个数组的结构来表示</p> <div class="language- extra-class"><pre class="language-text"><code> ECStack = []
+</code></pre></div><p>当我们开始执行js代码的时候，最先解析的是全局上下文的代码，那这个时候，全局的上下文就先入栈，遇到函数执行的时候，才会创建函数上下文，然后推入栈中，执行完成后出栈，当整个程序运行完成之后，栈才会被清空，我们写个demo来分析一下</p> <div class="language- extra-class"><pre class="language-text"><code>function f1(){
+    f2()
+    console.log('f1')
+}
+function f2(){
+    f3()
+    console.log('f2')
+}
+function f3(){
+    console.log('f3')
+}
+f1() // f3,f2,f1
+</code></pre></div><p>上面代码中会输出：f3,f2,f1
+我们可以伪代码演示一下执行的过程</p> <div class="language- extra-class"><pre class="language-text"><code>1、进入全局上下文，先入栈
+ECStack = [globalContext]
+2、执行f1()
+ECStack.push(f1Context)
+ECStack = [f1Context,globalContext]
+3、f1中先调用f2,再入栈
+ECStack.push(f2Context)
+ECStack = [f2Context,f1Context,globalContext]
+4、f2中又调用f3,再入栈
+ECStack.push(f3Context)
+ECStack = [f3Context,f2Context,f1Context,globalContext]
+5、f3执行完毕
+ECStack.pop()
+ECStack = [f2Context,f1Context,globalContext]
+6、f2执行完毕
+ECStack.pop()
+ECStack = [f1Context,globalContext]
+7、f1执行完成
+ECStack.pop()
+ECStack = [globalContext]
+
+</code></pre></div><h2 id="解析上一章的思考题"><a href="#解析上一章的思考题" class="header-anchor">#</a> 解析上一章的思考题</h2> <p>我们理解了js的执行上下文栈了，我们分别分析一下他们的执行上下文栈</p> <div class="language- extra-class"><pre class="language-text"><code> var scope = 'global scope'
+ function checkscope(){
+     var scope = 'local socpe'
+     function f(){
+         return scope
+     }
+     f()
+ }
+ checkscope()
+ 
+  // 上下文栈
+  1、ECStack = [globaleContext]
+  2、checkscope执行
+  ECStack.push(checkscopeContext)
+  ECStack = [checkscopeContext , globaleContext]
+  3、f执行
+  ECStack.push(f1Context)
+  ECStack = [f1Context , checkscopeContext , globaleContext]
+  4、f1执行完成
+  ECStack.pop()
+  ECStack = [checkscopeContext , globaleContext]
+  5、checkscope执行完成
+  ECStack.pop()
+  ECStack = [f1Context , checkscopeContext , globaleContext]
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code> var scope = 'glabal scope'
+ function checkscope(){
+     var scope = 'local scope'
+     function f(){
+         return scope
+     }
+     return f
+ }
+
+ checkscope()()
+
+  // 上下文栈
+  1、ECStack = [globaleContext]
+  2、checkscope执行
+  ECStack.push(checkscopeContext)
+  ECStack = [checkscopeContext , globaleContext]
+  3、checkscope执行完成
+  ECStack.pop()
+  ECStack = [globaleContext]
+  4、f1执行
+  ECStack.push(f1Context)
+  ECStack = [checkscopeContext , globaleContext]
+  5、f1执行完成
+  ECStack.pop()
+  ECStack = [globaleContext]
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blogs/base/js/lexical.html" class="prev">
+        JS 词法分析（静态作用域）
+      </a></span> <span class="next"><a href="/blogs/base/js/variable_object.html">
+        JS 变量对象
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blogs/assets/js/app.889eeba3.js" defer></script><script src="/blogs/assets/js/2.e81f7628.js" defer></script><script src="/blogs/assets/js/12.63f0cd99.js" defer></script>
+  </body>
+</html>
